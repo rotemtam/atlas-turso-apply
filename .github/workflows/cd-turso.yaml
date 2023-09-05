@@ -16,4 +16,4 @@ jobs:
           curl -sSf https://atlasgo.sh | sh
           atlas schema apply --env turso
         env:
-          TURSO_TOKEN: {{ secrets.TURSO_TOKEN }}
+          TURSO_TOKEN: ${{ secrets.TURSO_TOKEN }}
