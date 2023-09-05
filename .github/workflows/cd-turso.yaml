@@ -1,0 +1,19 @@
+name: turso
+on:
+  push:
+    branches:
+      - master
+# Permissions to write comments on the pull request.
+permissions:
+  contents: read
+  pull-requests: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+          curl -sSf https://atlasgo.sh | sh
+          atlas schema apply --env turso
+        env:
+          TURSO_TOKEN: {{ secrets.TURSO_TOKEN }}
