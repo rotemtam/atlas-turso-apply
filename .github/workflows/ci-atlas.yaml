@@ -47,4 +47,5 @@ jobs:
         with:
           dir: 'migrations'
           driver: mysql
+          dev-url: sqlite://file?mode=memory
           cloud-token: ${{ secrets.ATLAS_CLOUD_TOKEN_utTMdP }}
