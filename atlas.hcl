@@ -1,13 +1,11 @@
-env "local" {
-  src = "./schema.hcl"
-  dev = "docker://mysql/8/dev"
-  migration {
-    dir = "file://migrations"
-  }
-  format {
-    migrate {
-      diff = "{{ sql . \"  \" }}"
-    }
+variable "cloud_token" { 
+  type    = string
+  default = getenv("ATLAS_TOKEN")
+}
+  
+atlas {
+  cloud {
+    token = var.cloud_token
   }
 }
 
@@ -17,8 +15,10 @@ variable "token" {
 }
 
 env "turso" {
-  src = "file://schema.hcl"
   url     = "libsql+wss://deployci-rotemtam.turso.io?authToken=${var.token}"
   exclude = ["_litestream*"]
+  migration {
+    dir = "file://migrations"
+    format = atlas
+  }
 }
-
