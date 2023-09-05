@@ -17,4 +17,4 @@ jobs:
           atlas schema apply --env turso --to file://migrations --dev-url "sqlite://file?mode=memory" --auto-approve
         env:
           TURSO_TOKEN: ${{ secrets.TURSO_TOKEN }}
-          # ATLAS_CLOUD_TOKEN: ${{ secrets.ATLAS_CLOUD_TOKEN_utTMdP }}
+          ATLAS_CLOUD_TOKEN: ${{ secrets.ATLAS_CLOUD_TOKEN_utTMdP }}

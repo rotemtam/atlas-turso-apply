@@ -35,7 +35,7 @@ jobs:
       - uses: ariga/atlas-action@v0
         with:
           dir: 'migrations'
-          dev-url: "mysql://root:pass@localhost:3306/dev"
+          dev-url: "sqlite://file?mode=memory"
           cloud-token: ${{ secrets.ATLAS_CLOUD_TOKEN_utTMdP }}
   sync:
     needs: lint
